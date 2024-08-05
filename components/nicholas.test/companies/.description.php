@@ -6,15 +6,11 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 $arComponentDescription = [
     'NAME' => 'Компании, тестовое задание',
     'DESCRIPTION' => 'Формирует список компаний',
-    //'ICON' => '/images/eaddlist.gif',
     'CACHE_PATH' => 'Y',
-    'SORT' => 30,
+    'SORT' => 100,
     'COMPLEX' => 'Y',
     'PATH' => [
         'ID' => 'Тестовое задание',
-        'CHILD' => [
-            'ID' => 'test_company',
-            'NAME' => 'Компании тестовое задание',
-        ],
+        'NAME' => 'Компании тестовое задание',
     ],
 ];
