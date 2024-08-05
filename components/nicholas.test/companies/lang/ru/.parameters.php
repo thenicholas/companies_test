@@ -1,4 +1,5 @@
 <?php
+
 $MESS['TN_TESTCOMPANY_DETAIL_URL_TEMPLATE'] = 'Путь к странице детального просмотра';
 $MESS['TN_TESTCOMPANY_COMPANY_ID_DESC'] = 'Идентификатор компании';
 $MESS['TN_TESTCOMPANY_IBLOCK_FIELD'] = 'Поля';
