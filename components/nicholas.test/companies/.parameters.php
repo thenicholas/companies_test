@@ -48,7 +48,6 @@ while ($row = $rsIBlock->fetch()) {
 
 // Property codes
 $arProperty_LNS = [];
-$arProperty = [];
 if ($iblockExists) {
     $rsProp = CIBlockProperty::GetList(
         [
@@ -61,7 +60,6 @@ if ($iblockExists) {
         ]
     );
     while ($arr = $rsProp->Fetch()) {
-        $arProperty[$arr['CODE']] = '[' . $arr['CODE'] . '] ' . $arr['NAME'];
         if (in_array($arr['PROPERTY_TYPE'], ['L', 'N', 'S', 'E'])) {
             $arProperty_LNS[$arr['CODE']] = '[' . $arr['CODE'] . '] ' . $arr['NAME'];
         }
