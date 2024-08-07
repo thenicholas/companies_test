@@ -6,23 +6,16 @@ use Bitrix\Main\Localization\Loc;
 
 class TnTestCompaniesDetailComponent extends CBitrixComponent
 {
-    const FORM_ID = 'companies';
-
     public function executeComponent()
     {
         $fields = $this->arParams['DETAIL_FIELD_CODE'];
         $properties = $this->arParams['DETAIL_PROPERTY_CODE'];
-        $fields = array_filter($fields, fn($value) => $value !== '');
+        $fields = array_filter($fields);
 
-        $properties = array_filter($properties, fn($value) => $value !== '');
+        $properties = array_filter($properties);
 
         $params['select'] = self::prepareSelectParams($fields, $properties);
         $params['filter'] = ['ID' => $this->arParams['COMPANY_ID']];
-
-
-        if (empty($company)) {
-            ShowError(Loc::getMessage('TN_TEST_COMPANIES_NOT_FOUND'));
-        }
 
         if ($this->startResultCache()) {
             $this->SetResultCacheKeys([]);
@@ -30,6 +23,11 @@ class TnTestCompaniesDetailComponent extends CBitrixComponent
             $names = self::getPropertyNames($properties, $fields);
 
             $company = self::getCompany($fields, $properties, $params);
+
+            if (empty($company)) {
+                ShowError(Loc::getMessage('TN_TEST_COMPANIES_NOT_FOUND'));
+                $this->abortResultCache();
+            }
 
             $this->arResult = $company;
             $this->arResult['NAMES'] = $names;
